@@ -1,4 +1,4 @@
-package agentesTIA;
+package inputOutput;
 
 import java.io.DataInputStream;
 import java.io.File;
