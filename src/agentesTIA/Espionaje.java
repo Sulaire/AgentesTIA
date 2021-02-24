@@ -2,20 +2,13 @@ package agentesTIA;
 
 public class Espionaje extends Agente{
 
-	private String safeHouses; // cambiar a vector
+	private String[] safeHouses; // cambiar a vector
 
-	public Espionaje(String name, int age, String direction, double salary, String safeHouses) {
+	public Espionaje(String name, int age, String direction, double salary) {
 		super(name, age, direction, salary);
-		this.safeHouses = safeHouses;
+		//this.safeHouses = IODatos.cargarDatosTexto("Pisos.txt");
 	}
 
-	public String getSafeHouses() {
-		return safeHouses;
-	}
-
-	public void setSafeHouses(String safeHouses) {
-		this.safeHouses = safeHouses;
-	}
 
 	
 	@Override
