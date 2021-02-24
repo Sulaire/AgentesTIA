@@ -45,9 +45,6 @@ public class IOData {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			
 		}
 
 		
@@ -76,9 +73,6 @@ public class IOData {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			
 		}
 		
 		public static void saveAgentsFile(String route, agentesTIA.Agente[] vAgents) {
