@@ -2,13 +2,17 @@ package principal;
 
 import java.util.Scanner;
 
+import agentesTIA.Espionaje;
+import agentesTIA.Jefazo;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		agentesTIA.Agente[] vAgents = inputOutput.IOData.uploadAgentsFile("Agentes.dat");
-
+		
+	
 		int opt = 0;
 
 		do {
