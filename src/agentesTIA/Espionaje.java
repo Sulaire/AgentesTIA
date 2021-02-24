@@ -2,7 +2,7 @@ package agentesTIA;
 
 public class Espionaje extends Agente{
 
-	private String safeHouses;
+	private String safeHouses; // cambiar a vector
 
 	public Espionaje(String name, int age, String direction, double salary, String safeHouses) {
 		super(name, age, direction, salary);

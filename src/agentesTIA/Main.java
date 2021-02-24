@@ -13,14 +13,14 @@ public class Main {
 		System.out.println("Bienvenido, Don Vivi");
 		
 		System.out.println("¿Que acción quiere realizar?");
-		System.out.println("1º: Ver los Agentes alistados");
-		System.out.println("2º: Filtrar los Agentes por su salario");
-		System.out.println("3º: Dar de alta un nuevo piso ");
-		System.out.println("4º: Dar de alta un nuevo arma");
-		System.out.println("5º: Dar de alta un nuevo agente");
-		System.out.println("6º: Encriptar toda la inforamción");
-		System.out.println("7º: Desencriptar toda la información");
-		System.out.println("8º: Salir del programa");
+		System.out.println("1: Ver los Agentes alistados");
+		System.out.println("2: Filtrar los Agentes por su salario");
+		System.out.println("3: Dar de alta un nuevo piso ");
+		System.out.println("4: Dar de alta un nuevo arma");
+		System.out.println("5: Dar de alta un nuevo agente");
+		System.out.println("6: Encriptar toda la inforamcion");
+		System.out.println("7: Desencriptar toda la informacion");
+		System.out.println("8: Salir del programa");
 		
 		option = scan.nextInt();
 		
