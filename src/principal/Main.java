@@ -38,6 +38,29 @@ public class Main {
 			case 5:
 				switch (Funciones.printAgent()) {
 				case 1:
+					String name;
+					int age;
+					String direction;
+					double salary;
+					int yearsLeading;
+					
+					System.out.println("Dime los datos del nuevo Jefazo");
+					Scanner readString = new Scanner(System.in);
+					Scanner readInt = new Scanner(System.in);
+					Scanner readDouble = new Scanner(System.in);
+					System.out.println("Nombre:");
+					name = readString.nextLine();
+					System.out.println("Edad");
+					age = readInt.nextInt();
+					System.out.println("Direccion");
+					direction = readString.nextLine();
+					System.out.println("Salario");
+					salary = readDouble.nextDouble();
+					System.out.println("Años de mandato");
+					yearsLeading = readInt.nextInt();
+					
+					vAgents[Funciones.freePosition(vAgents)] = new agentesTIA.Jefazo(name, age, direction, salary, yearsLeading);
+					
 					break;
 				case 2:
 					break;
@@ -46,7 +69,7 @@ public class Main {
 				case 4:
 					break;
 				}
-				// inputOutput.IOData.saveAgentsFile("Agentes.dat", vAgents);
+				inputOutput.IOData.saveAgentsFile("Agentes.dat", vAgents);
 				break;
 			case 6:
 				// System.out.println("Aqui encriptar");

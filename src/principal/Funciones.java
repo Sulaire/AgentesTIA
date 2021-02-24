@@ -69,4 +69,17 @@ public class Funciones {
 		return option;
 	}
 
+	public static int freePosition(agentesTIA.Agente[] vAgents) {
+	int pos = 0;
+	
+	for (int i = 0; i < vAgents.length; i++) {
+		if (vAgents[i] == null) {
+			pos = i;
+			break;
+		}
+	}
+		
+	return pos;
+	}
+	
 }
