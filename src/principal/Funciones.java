@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Funciones {
 
+	// Funcion para imprimir menu principal
 	public static int printMenu() {
 
 		int option = 0;
@@ -20,7 +21,7 @@ public class Funciones {
 		System.out.println("6: Encriptar toda la inforamcion");
 		System.out.println("7: Desencriptar toda la informacion");
 		System.out.println("8: Salir del programa");
-
+		// Bucle para detectar errores
 		do {
 
 			try {
@@ -29,7 +30,7 @@ public class Funciones {
 			} catch (Exception e) {
 				System.out.println("El valor introducido no puede ser una letra");
 				scan = new Scanner(System.in);
-			} 
+			}
 			if (option < 1 || option > 8)
 				System.out.println("Pon una opcion valida");
 		} while (option < 1 || option > 8);
@@ -37,10 +38,35 @@ public class Funciones {
 		return option;
 	}
 
-	public static String printAgent() {
-		String agent = "";
+	// Menu para alistar agentes (Switch 5)
+	public static int printAgent() {
+		int option = 0;
 
-		return agent;
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("Que tipo de agente quiere dar de alta");
+		System.out.println("1: Jefazo");
+		System.out.println("2: Agente 007");
+		System.out.println("3: Agente de espionaje");
+		System.out.println("4: Salir");
+
+		do {
+
+			try {
+
+				option = scan.nextInt();
+				
+			} catch (Exception e) {
+
+				System.out.println("El valor introducido no puede ser una letra");
+				scan = new Scanner(System.in);
+			}
+			if (option < 1 || option > 4)
+				System.out.println("Pon una opcion valida");
+				
+		} while (option < 1 || option > 4);
+
+		return option;
 	}
 
 }
