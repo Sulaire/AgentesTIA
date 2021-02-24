@@ -1,12 +1,66 @@
 package agentesTIA;
 
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		int option = 0 ;
+		Scanner scan = new Scanner(System.in);
 		
-		//Hello
+		System.out.println("Bienvenido, Don Vivi");
+		
+		System.out.println("¿Que acción quiere realizar?");
+		System.out.println("1: Ver los Agentes alistados");
+		System.out.println("2: Filtrar los Agentes por su salario");
+		System.out.println("3: Dar de alta un nuevo piso ");
+		System.out.println("4: Dar de alta un nuevo arma");
+		System.out.println("5: Dar de alta un nuevo agente");
+		System.out.println("6: Encriptar toda la inforamcion");
+		System.out.println("7: Desencriptar toda la informacion");
+		System.out.println("8: Salir del programa");
+		
+		option = scan.nextInt();
+		
+		switch (option) {
+		case 1:
+			System.out.println("Agentes listados");
+			
+			
+			break;
+		case 2:
+			int money = 0;
+			Scanner scanMoney = new Scanner(System.in);
+			System.out.println("Dime la cifra a buscar");
+			money = scanMoney.nextInt();
+			
+			System.out.println(money);
+			break;
+		case 3: 
+			System.out.println("Aqui el piso");
+			break;
+		case 4:
+			System.out.println("Aqui el arma");
+			
+			break;
+		case 5:
+			System.out.println("Aqui el agente");
+			
+			break;
+		case 6:
+			System.out.println("Aqui encriptar");
+			
+			break;
+		case 7: 
+			System.out.println("Aqui desencriptar");
+			
+			break;
+		case 8:
+			System.out.println("Buena suerte, Don Vivi");
+			break;
+		}
 		
 	}
 
