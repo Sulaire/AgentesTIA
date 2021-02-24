@@ -4,7 +4,7 @@ public class Espionaje extends Agente{
 
 	private String[] safeHouses; // cambiar a vector
 
-	public Espionaje(String name, int age, String direction, double salary, String safeHouses) {
+	public Espionaje(String name, int age, String direction, double salary) {
 		super(name, age, direction, salary);
 		//this.safeHouses = IODatos.cargarDatosTexto("Pisos.txt");
 	}
