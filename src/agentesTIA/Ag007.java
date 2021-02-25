@@ -9,7 +9,7 @@ public class Ag007 extends Agente{
 	public Ag007(String name, int age, String direction, double salary, int kills) {
 		super(name, age, direction, salary);
 		this.kills = kills;
-		//this.guns = IODatos.cargarDatosTexto("Armas.txt");
+		this.guns = inputOutput.IOData.readTxt("Armas.txt");
 	}
 
 	
