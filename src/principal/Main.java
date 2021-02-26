@@ -15,7 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		agentesTIA.Agente[] vAgents = inputOutput.IOData.uploadAgentsFile("recursos/Agentes.dat");
+		Agente[] vAgents = inputOutput.IOData.uploadAgentsFile("recursos/Agentes.dat");
 		int opt = 0;
 
 		do {
@@ -23,7 +23,11 @@ public class Main {
 			switch (principal.Funciones.printMenu()) {
 
 			case 1:
-				// System.out.println("Agentes listados");
+				for (Agente a : vAgents) {
+					if (a!=null) {
+						System.out.println(a.toString());
+					}
+				}
 
 				break;
 			case 2:
@@ -42,17 +46,30 @@ public class Main {
 				break;
 			case 3:
 				File f = new File("recursos/Pisos.txt");
+				Scanner read = new Scanner(System.in);
 				if (!f.exists()) {
 					System.out.println("El archivo está encriptado, desencríptalo primero");
 				}
+				
+				String flat= "";
+				System.out.println("Dime el nuevo piso franco que se podra utilizar");
+				flat = read.nextLine();
+				IOData.writeTxt(flat, "recursos/Pisos.txt");
+				
 				break;
 			case 4:
 				File f2 = new File("recursos/Armas.txt");
+				Scanner read2 = new Scanner(System.in);
 				if (!f2.exists()) {
 					System.out.println("El archivo está encriptado, desencríptalo primero");
 				} else {
 					
 				}
+				
+				String gun= "";
+				System.out.println("Dime la nueva arma disponible");
+				gun = read2.nextLine();
+				IOData.writeTxt(gun, "recursos/Armas.txt");
 
 				break;
 			case 5:
@@ -106,9 +123,9 @@ public class Main {
 					System.out.println("Los archivos ya estan encriptados");
 				}else {
 				String[] vPisos = inputOutput.IOData.readTxt("recursos/Pisos.txt");
-				inputOutput.IOData.writeBinary("recursos/Pisos.dat", vPisos, "recursos/Pisos.txt");
+				inputOutput.IOData.decrypt("recursos/Pisos.dat", vPisos, "recursos/Pisos.txt");
 				String[] vArmas = inputOutput.IOData.readTxt("recursos/Armas.txt");
-				inputOutput.IOData.writeBinary("recursos/Armas.dat", vArmas, "recursos/Armas.txt");
+				inputOutput.IOData.decrypt("recursos/Armas.dat", vArmas, "recursos/Armas.txt");
 				
 				System.out.println("Archivos encriptados");
 				}
@@ -120,9 +137,9 @@ public class Main {
 					System.out.println("Los archivos ya estan desencriptados");
 				}else {
 				String[] vPisos2 = inputOutput.IOData.readBinary("recursos/Pisos.dat");
-				inputOutput.IOData.writeTxt("recursos/Pisos.txt", vPisos2,"recursos/Pisos.dat");
+				inputOutput.IOData.encrypt("recursos/Pisos.txt", vPisos2,"recursos/Pisos.dat");
 				String[] vArmas2 = inputOutput.IOData.readBinary("recursos/Armas.dat");
-				inputOutput.IOData.writeTxt("recursos/Armas.txt", vArmas2, "recursos/Armas.dat");
+				inputOutput.IOData.encrypt("recursos/Armas.txt", vArmas2, "recursos/Armas.dat");
 				
 				System.out.println("Archivos desencriptados");
 				}

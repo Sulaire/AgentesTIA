@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class IOData {
 	
 		
-		public static void writeBinary(String route, String[] vString, String routeToDelete) {
+		public static void decrypt(String route, String[] vString, String routeToDelete) {
 			
 			File f = new File(route);
 			File f2 = new File(routeToDelete);
@@ -61,7 +61,7 @@ public class IOData {
 		}
 
 		
-		public static void writeTxt(String route, String[] vString, String routeToDelete) {
+		public static void encrypt(String route, String[] vString, String routeToDelete) {
 			
 			File f = new File(route);
 			File f2 = new File(routeToDelete);
@@ -97,6 +97,32 @@ public class IOData {
 			}
 			
 			f2.delete();
+		}
+		
+		
+		public static void writeTxt(String add, String route) {
+			File f = new File(route);
+			
+			if (!f.exists()) {
+				try {
+					f.createNewFile();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			try(FileWriter fw = new FileWriter(f, true); 
+				PrintWriter write = new PrintWriter(fw)){
+					
+					write.write("\n"+add);
+					
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		}
 		
 		
