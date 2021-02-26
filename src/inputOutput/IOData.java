@@ -1,6 +1,7 @@
 package inputOutput;
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,9 +17,10 @@ import java.util.Scanner;
 public class IOData {
 	
 		
-		public static void writeBinary(String route) {
+		public static void writeBinary(String route, String[] vString, String routeToDelete) {
 			
 			File f = new File(route);
+			File f2 = new File(routeToDelete);
 			
 			if (!f.exists()) {
 				try {
@@ -32,11 +34,19 @@ public class IOData {
 			
 			
 			
-			try(FileInputStream fi = new FileInputStream(f);
-				DataInputStream write = new DataInputStream(fi)){
+			try(FileOutputStream fi = new FileOutputStream(f);
+				DataOutputStream write = new DataOutputStream(fi)){
 				
 				
-				
+					for (int i = 0; i < vString.length; i++) {
+						if(vString[i]==null) {
+							break;
+						}else
+							write.writeUTF(vString[i]);
+							
+						
+					}
+			
 				
 				
 			} catch (FileNotFoundException e) {
@@ -46,12 +56,15 @@ public class IOData {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			f2.delete();
 		}
 
 		
-		public static void writeTxt(String route) {
+		public static void writeTxt(String route, String[] vString, String routeToDelete) {
 			
 			File f = new File(route);
+			File f2 = new File(routeToDelete);
 			
 			if (!f.exists()) {
 				try {
@@ -68,12 +81,22 @@ public class IOData {
 			try(FileWriter fw = new FileWriter(f); 
 				PrintWriter write = new PrintWriter(fw)){
 				
+				for (int i = 0; i < vString.length; i++) {
+					if(vString[i+1]==null) {
+						write.write(vString[i]);
+						break;
+					}else
+						write.write(vString[i]+"\n");
+					
+				}
 				
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			f2.delete();
 		}
 		
 		
@@ -137,22 +160,19 @@ public class IOData {
 			
 			try (FileInputStream fi = new FileInputStream(f);
 				DataInputStream read = new DataInputStream(fi);){
-				/*
+				
 				
 				while (true) {
 					vString[cont]= read.readUTF();
 					cont++;
 				}
 				
-				VOY POR AQUI, PREGUNTAR LECTURA Y EL SALTO DE LINEA
-				*/
+				
 				
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} 
 			
 			
@@ -181,6 +201,7 @@ public class IOData {
 			}
 			
 		}
+		
 		
 		public static agentesTIA.Agente[] uploadAgentsFile(String route){
 			
