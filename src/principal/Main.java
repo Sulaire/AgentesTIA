@@ -3,6 +3,10 @@ package principal;
 import java.io.File;
 import java.util.Scanner;
 
+import agentesTIA.Espionaje;
+import agentesTIA.Jefazo;
+import inputOutput.IOData;
+
 import agentesTIA.Ag007;
 import agentesTIA.Agente;
 
@@ -11,8 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Agente[] vAgents = inputOutput.IOData.uploadAgentsFile("Agentes.dat");
-
+		agentesTIA.Agente[] vAgents = inputOutput.IOData.uploadAgentsFile("recursos/Agentes.dat");
 		int opt = 0;
 
 		do {
@@ -97,12 +100,32 @@ public class Main {
 				inputOutput.IOData.saveAgentsFile("Agentes.dat", vAgents);
 				break;
 			case 6:
-				// System.out.println("Aqui encriptar");
-
+				File fArmas = new File("recursos/Armas.txt");
+				
+				if (!fArmas.exists()) {
+					System.out.println("Los archivos ya estan encriptados");
+				}else {
+				String[] vPisos = inputOutput.IOData.readTxt("recursos/Pisos.txt");
+				inputOutput.IOData.writeBinary("recursos/Pisos.dat", vPisos, "recursos/Pisos.txt");
+				String[] vArmas = inputOutput.IOData.readTxt("recursos/Armas.txt");
+				inputOutput.IOData.writeBinary("recursos/Armas.dat", vArmas, "recursos/Armas.txt");
+				
+				System.out.println("Archivos encriptados");
+				}
 				break;
 			case 7:
-				// System.out.println("Aqui desencriptar");
-
+				File fArmas2 = new File("recursos/Armas.dat");
+				
+				if (!fArmas2.exists()) {
+					System.out.println("Los archivos ya estan desencriptados");
+				}else {
+				String[] vPisos2 = inputOutput.IOData.readBinary("recursos/Pisos.dat");
+				inputOutput.IOData.writeTxt("recursos/Pisos.txt", vPisos2,"recursos/Pisos.dat");
+				String[] vArmas2 = inputOutput.IOData.readBinary("recursos/Armas.dat");
+				inputOutput.IOData.writeTxt("recursos/Armas.txt", vArmas2, "recursos/Armas.dat");
+				
+				System.out.println("Archivos desencriptados");
+				}
 				break;
 			case 8:
 				// System.out.println("Buena suerte, Don Vivi");
