@@ -40,7 +40,8 @@ public class Main {
 						money = scanMoney.nextInt();
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
-						System.out.println("Pon un numero valido");
+						System.out.println("El valor introducido no puede ser una letra");
+						System.out.println("Pon una opcion valida");
 						scanMoney = new Scanner(System.in);
 					}
 				} while (money == -8);
@@ -83,8 +84,8 @@ public class Main {
 				break;
 			case 5:
 				int ag = Funciones.printAgent();
-				int age;
-				double salary;
+				int age = 0;
+				double salary = 0;
 				String name;
 				String direction;
 				System.out.println("Dime los datos del agente");
@@ -93,13 +94,33 @@ public class Main {
 				Scanner readDouble = new Scanner(System.in);
 				System.out.println("Nombre:");
 				name = readString.nextLine();
-				System.out.println("Edad");
-				age = readInt.nextInt();
+				do {
+					try {
+						System.out.println("Edad");
+						age = readInt.nextInt();
+						if (age < 0) {
+							System.out.println("El numero no puede ser negativo");
+						}
+					} catch (Exception e) {
+						System.out.println("Introduce un numero valido");
+						readInt = new Scanner(System.in);
+					}
+				} while (age <= 0);
 				System.out.println("Direccion");
 				direction = readString.nextLine();
-				System.out.println("Salario");
-				salary = readDouble.nextDouble();
-
+				do {
+					try {
+						System.out.println("Salario");
+						salary = readDouble.nextDouble();
+						if (salary < 0) {
+							System.out.println("El numero no puede ser negativo");
+						}
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.out.println("Introduce un numero vaido");
+						readDouble = new Scanner(System.in);
+					}
+				} while (salary <= 0);
 				switch (ag) {
 
 				case 1:
@@ -111,9 +132,20 @@ public class Main {
 
 					break;
 				case 2:
-					int kills;
-					System.out.println("Numero de bajas");
-					kills = readInt.nextInt();
+					int kills = 0;
+					do {
+						try {
+							System.out.println("Numero de bajas");
+							kills = readInt.nextInt();
+							if (kills < 0) {
+								System.out.println("El numero no puede ser negativo");
+							}
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							System.out.println("Introduce un numero valido");
+							readInt = new Scanner(System.in);
+						}
+					} while (kills < 0);
 					vAgents[Funciones.freePosition(vAgents)] = new agentesTIA.Ag007(name, age, direction, salary,
 							kills);
 					break;
