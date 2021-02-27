@@ -22,10 +22,20 @@ public class Ag007 extends Agente{
 	}
 	
 	@Override
-	public String toString() {		
+	public String toString() {
+		
+		
+		String possibleGuns = "";
+		
+		for (String string : guns) {
+			if (string!=null) {
+				possibleGuns += string+"-";
+			}
+		}
+		
+		
 		return super.toString()+"Numero de bajas: " +kills+"\n"
-				+"Armas disponibles: "+guns
-				+"\n********************************************";
+				+"Armas disponibles: "+possibleGuns+"\n-----------------------------------------";
 	}
 	
 }
