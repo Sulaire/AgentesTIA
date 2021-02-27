@@ -1,15 +1,15 @@
 package agentesTIA;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
-public class Agente implements Serializable{
+public class Agente implements Serializable {
 
-	
 	protected String name;
 	protected int age;
 	protected String direction;
 	protected double salary;
-	
+
 	public Agente(String name, int age, String direction, double salary) {
 		this.name = name;
 		this.age = age;
@@ -17,7 +17,6 @@ public class Agente implements Serializable{
 		this.salary = salary;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -50,19 +49,10 @@ public class Agente implements Serializable{
 		this.salary = salary;
 	}
 
-
-	
-	
 	@Override
 	public String toString() {
-		return "********************************************\n"
-				+ "Nombre: "+name+"\n"
-				+ "Edad: "+age+"\n"
-				+ "Direccion: "+direction+"\n"
-				+ "Salario: "+salary+"\n";
+		return "********************************************\n" + "Nombre: " + name + "\n" + "Edad: " + age + "\n"
+				+ "Direccion: " + direction + "\n" + "Salario: " + salary + "\n";
 	}
-	
-	
-	
-	
+
 }
