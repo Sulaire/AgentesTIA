@@ -22,9 +22,9 @@ public class Ag007 extends Agente{
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() {		
 		return super.toString()+"Numero de bajas: " +kills+"\n"
-	//			+"Armas disponibles: "+guns
+				+"Armas disponibles: "+guns
 				+"\n********************************************";
 	}
 	

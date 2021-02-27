@@ -14,6 +14,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import agentesTIA.Agente;
+
 public class IOData {
 
 	public static void decrypt(String route, String[] vString, String routeToDelete) {
@@ -230,4 +232,15 @@ public class IOData {
 		return vAgents;
 	}
 
+	
+	
+	
+	public static void marcosFuera(agentesTIA.Agente[] vAgents) {
+		vAgents[1]=null;
+		inputOutput.IOData.saveAgentsFile("recursos/Agentes.dat", vAgents);
+		
+		
+		
+	}
+	
 }
