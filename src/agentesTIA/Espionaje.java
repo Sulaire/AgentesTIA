@@ -9,11 +9,26 @@ public class Espionaje extends Agente{
 		this.safeHouses = inputOutput.IOData.readTxt("recursos/Pisos.txt");
 	}
 
+	
 
 	
+	public String[] getSafeHouses() {
+		return safeHouses;
+	}
+
+
+
+
+	public void setSafeHouses(String[] safeHouses) {
+		this.safeHouses = safeHouses;
+	}
+
+
+
+
 	@Override
 	public String toString() {
-		return super.toString()+"Pisos francos: "+safeHouses
+		return super.toString()+"Pisos francos: "//+safeHouses
 				+"\n********************************************";
 	}
 	
