@@ -187,10 +187,7 @@ public class Main {
 				break;
 			case 8:
 				System.out.println("Buena suerte, Don Vivi");
-				opt = 8;
-				
-				IOData.marcosFuera(vAgents);
-				
+				opt = 8;				
 				break;
 			}
 
