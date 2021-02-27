@@ -233,14 +233,4 @@ public class IOData {
 	}
 
 	
-	
-	
-	public static void marcosFuera(agentesTIA.Agente[] vAgents) {
-		vAgents[1]=null;
-		inputOutput.IOData.saveAgentsFile("recursos/Agentes.dat", vAgents);
-		
-		
-		
-	}
-	
 }

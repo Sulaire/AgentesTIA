@@ -51,7 +51,7 @@ public class Agente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "********************************************\n" + "Nombre: " + name + "\n" + "Edad: " + age + "\n"
+		return "Nombre: " + name + "\n" + "Edad: " + age + "\n"
 				+ "Direccion: " + direction + "\n" + "Salario: " + salary + "\n";
 	}
 

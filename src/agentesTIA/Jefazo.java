@@ -21,7 +21,7 @@ public class Jefazo extends Agente{
 	
 	@Override
 	public String toString() {
-		return super.toString()+"Años de mandato: " +yearsLeading+"\n********************************************";
+		return "********************************************\n"+super.toString()+"Años de mandato: " +yearsLeading+"\n********************************************";
 	}
 	
 	
