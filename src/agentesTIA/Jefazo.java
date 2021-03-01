@@ -7,9 +7,10 @@ public class Jefazo extends Agente{
 
 	public Jefazo(String name, int age, String direction, double salary, int yearsLeading) {
 		super(name, age, direction, salary);
+		//Campo unico de Jefazo
 		this.yearsLeading = yearsLeading;
 	}
-
+	
 	public int getYearsLeading() {
 		return yearsLeading;
 	}
@@ -18,7 +19,7 @@ public class Jefazo extends Agente{
 		this.yearsLeading = yearsLeading;
 	}
 
-	
+	//toString del Jefazo es diferente al resto
 	@Override
 	public String toString() {
 		return "********************************************\n"+super.toString()+"Años de mandato: " +yearsLeading+"\n********************************************";
