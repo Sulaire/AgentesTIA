@@ -6,6 +6,7 @@ public class Espionaje extends Agente{
 
 	public Espionaje(String name, int age, String direction, double salary) {
 		super(name, age, direction, salary);
+		//Campo unico de Espionaje
 		this.safeHouses = inputOutput.IOData.readTxt("recursos/Pisos.txt");
 	}
 
