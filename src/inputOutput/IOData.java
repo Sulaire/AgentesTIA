@@ -18,13 +18,20 @@ import agentesTIA.Agente;
 
 public class IOData {
 
-	// Desencripta los archivos pisos y armas
-	// Recibe la ruta de los archivo, el vector y la ruta del archivo a borrar
+	
+	/**
+	 * Desencripta los archivos pisos y armas
+	 * Recibe la ruta de los archivo, el vector y la ruta del archivo a borrar
+	 * 
+	 * @param route				ruta del archivo destino
+	 * @param vString			Vector que se va a guardar
+	 * @param routeToDelete		ruta del archivo origen
+	 */
 	public static void decrypt(String route, String[] vString, String routeToDelete) {
 
 		File f = new File(route);
 		File f2 = new File(routeToDelete);
-		// Comprueba si el archivo está creado
+		// Comprueba si el archivo estï¿½ creado
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
