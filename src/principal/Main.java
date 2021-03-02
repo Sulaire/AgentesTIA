@@ -24,14 +24,14 @@ public class Main {
 		int opt = 0;
 
 		do {
-			/** Aqui se carga el vector llamando a la funcion uploadAgentsFile*/
+			// Aqui se carga el vector llamando a la funcion uploadAgentsFile
 			Agente[] vAgents = inputOutput.IOData.uploadAgentsFile("recursos/Agentes.dat");
 			
-			/** Switch del menu principal.*/
+			// Switch del menu principal.
 			switch (principal.Funciones.printMenu()) {
 
 			case 1:
-				/**La opcion 1 muestra por pantalla todos los agentes registrados*/
+				//La opcion 1 muestra por pantalla todos los agentes registrados
 				for (Agente a : vAgents) {
 					if (a != null) {
 						System.out.println(a.toString());
@@ -42,7 +42,7 @@ public class Main {
 				
 				
 			case 2:
-				/**La opcion 2 muestra los agentes con un sueldo superior al introducido por el usuario*/
+				//La opcion 2 muestra los agentes con un sueldo superior al introducido por el usuario
 				int money = -8;
 				Scanner scanMoney = new Scanner(System.in);
 				System.out.println("Dime la cifra a buscar");
@@ -69,7 +69,7 @@ public class Main {
 				
 				
 			case 3:
-				/**La opcion 3 sirve para añadir un nuevo piso franco al archivo Pisos.txt*/
+				//La opcion 3 sirve para aï¿½adir un nuevo piso franco al archivo Pisos.txt
 				File f = new File("recursos/Pisos.txt");
 				Scanner read = new Scanner(System.in);
 				if (!f.exists()) {
@@ -85,7 +85,7 @@ public class Main {
 				
 				
 			case 4:
-				/**La opcion 4 sirve para añadir una nueva arna al archivo Armas.txt*/
+				//La opcion 4 sirve para aï¿½adir una nueva arna al archivo Armas.txt
 				File f2 = new File("recursos/Armas.txt");
 				Scanner read2 = new Scanner(System.in);
 				if (!f2.exists()) {
@@ -103,7 +103,7 @@ public class Main {
 				
 				
 			case 5:
-				/**La opcion 5 sirve para registrar un nuevo agente*/
+				//La opcion 5 sirve para registrar un nuevo agente
 				int ag = Funciones.printAgent();
 				int age = 0;
 				double salary = 0;
@@ -115,11 +115,11 @@ public class Main {
 				Scanner readDouble = new Scanner(System.in);
 				
 				
-				/**Aqui se pide el nombre*/
+				//Aqui se pide el nombre
 				System.out.println("Nombre:");
 				name = readString.nextLine();
 				
-				/**Aqui se pide la edad*/
+				//Aqui se pide la edad*
 				do {
 					try {
 						System.out.println("Edad");
@@ -133,12 +133,12 @@ public class Main {
 					}
 				} while (age <= 0);
 				
-				/**Aqui se pide la direccion*/
+				//Aqui se pide la direccion*/
 				System.out.println("Direccion");
 				direction = readString.nextLine();
 				
 				
-				/**Aqui se pide el salario*/
+				//Aqui se pide el salario
 				do {
 					try {
 						System.out.println("Salario");
@@ -155,7 +155,7 @@ public class Main {
 				
 				
 				switch (ag) {
-				/**En este switch se indicara el tipo de agente a introducir y dependiendo de cada uno pedira su informacion especifica*/
+				//En este switch se indicara el tipo de agente a introducir y dependiendo de cada uno pedira su informacion especifica
 				case 1:
 					int yearsLeading;
 					System.out.println("Anos de mandato");
@@ -193,13 +193,13 @@ public class Main {
 				
 				
 			case 6:
-				/**La opcion 6 se utiliza para encriptar los archivos de armas y pisos*/
+				//La opcion 6 se utiliza para encriptar los archivos de armas y pisos
 				File fArmas = new File("recursos/Armas.txt");
 
 				if (!fArmas.exists()) {
 					System.out.println("Los archivos ya estan encriptados");
 				} else {
-					/**Primero se leeran los archivos de texto, se rellenaran dos vectores String (uno de armas y otro de pisos) y por ultimo se rellenaran dos archivos binarios con la informacion de los vectores*/
+					//Primero se leeran los archivos de texto, se rellenaran dos vectores String (uno de armas y otro de pisos) y por ultimo se rellenaran dos archivos binarios con la informacion de los vectores
 					String[] vPisos = inputOutput.IOData.readTxt("recursos/Pisos.txt");
 					inputOutput.IOData.decrypt("recursos/Pisos.dat", vPisos, "recursos/Pisos.txt");
 					String[] vArmas = inputOutput.IOData.readTxt("recursos/Armas.txt");
@@ -211,13 +211,13 @@ public class Main {
 				
 				
 			case 7:
-				/**La opcion 6 se utiliza para desencriptar los archivos de armas y pisos*/
+				//La opcion 6 se utiliza para desencriptar los archivos de armas y pisos
 				File fArmas2 = new File("recursos/Armas.dat");
 
 				if (!fArmas2.exists()) {
 					System.out.println("Los archivos ya estan desencriptados");
 				} else {
-					/**Primero se leeran los archivos binarios, se rellenaran dos vectores String (uno de armas y otro de pisos) y por ultimo se rellenaran dos archivos de texto con la informacion de los vectores*/
+					//Primero se leeran los archivos binarios, se rellenaran dos vectores String (uno de armas y otro de pisos) y por ultimo se rellenaran dos archivos de texto con la informacion de los vectores
 					String[] vPisos2 = inputOutput.IOData.readBinary("recursos/Pisos.dat");
 					inputOutput.IOData.encrypt("recursos/Pisos.txt", vPisos2, "recursos/Pisos.dat");
 					String[] vArmas2 = inputOutput.IOData.readBinary("recursos/Armas.dat");
@@ -229,7 +229,7 @@ public class Main {
 				
 				
 			case 8:
-				/**La opcion 8 es la que finaliza el programa*/
+				//La opcion 8 es la que finaliza el programa
 				System.out.println("Buena suerte, Don Vivi");
 				opt = 8;				
 				break;
