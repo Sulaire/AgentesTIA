@@ -2,7 +2,7 @@ package agentesTIA;
 
 import java.io.Serializable;
 import java.util.Scanner;
-
+//Clase principal de la que heredan el resto de agentes
 public class Agente implements Serializable {
 
 	protected String name;

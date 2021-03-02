@@ -18,11 +18,13 @@ import agentesTIA.Agente;
 
 public class IOData {
 
+	// Desencripta los archivos pisos y armas
+	// Recibe la ruta de los archivo, el vector y la ruta del archivo a borrar
 	public static void decrypt(String route, String[] vString, String routeToDelete) {
 
 		File f = new File(route);
 		File f2 = new File(routeToDelete);
-
+		// Comprueba si el archivo está creado
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
@@ -31,9 +33,9 @@ public class IOData {
 				e.printStackTrace();
 			}
 		}
-
+		// Se declara FileOutputStream y DataOutputStream (escribe en UTF)
 		try (FileOutputStream fi = new FileOutputStream(f); DataOutputStream write = new DataOutputStream(fi)) {
-
+			// Recorre el array comprobando si la posicion del vector esta vacia
 			for (int i = 0; i < vString.length; i++) {
 				if (vString[i] == null) {
 					break;
@@ -49,15 +51,17 @@ public class IOData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		// Borra el archivo anterior
 		f2.delete();
 	}
 
+	// Encripta los archivos pisos y armas
+	// Recibe la ruta de los archivo, el vector y la ruta del archivo a borrar
 	public static void encrypt(String route, String[] vString, String routeToDelete) {
 
 		File f = new File(route);
 		File f2 = new File(routeToDelete);
-
+		// Comprueba si el archivo existe
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
@@ -66,9 +70,10 @@ public class IOData {
 				e.printStackTrace();
 			}
 		}
-
+		// Se declaran FileWriter y PrintWriter (escribe en UTF)
 		try (FileWriter fw = new FileWriter(f); PrintWriter write = new PrintWriter(fw)) {
-
+			// Recorre el array comprobando si la posicion del vector esta vacia para
+			// escribir
 			for (int i = 0; i < vString.length; i++) {
 				if (vString[i + 1] == null) {
 					write.write(vString[i]);
@@ -82,13 +87,14 @@ public class IOData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		// Borra el archivo anterior
 		f2.delete();
 	}
 
+	// Escribe el archivo en txt
 	public static void writeTxt(String add, String route) {
 		File f = new File(route);
-
+		// Comprueba si el archivo existe
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
@@ -109,6 +115,7 @@ public class IOData {
 
 	}
 
+	// Lee los archivos armas y pisos
 	public static String[] readTxt(String route) {
 
 		String[] vString = new String[50];
@@ -126,7 +133,7 @@ public class IOData {
 		}
 
 		try (FileReader fr = new FileReader(f); Scanner read = new Scanner(fr)) {
-
+			
 			while (read.hasNextLine()) {
 				vString[cont] = read.nextLine();
 
@@ -143,7 +150,7 @@ public class IOData {
 
 		return vString;
 	}
-
+	//Lee el archivo en Binario (lo mismo que el anterior)
 	public static String[] readBinary(String route) {
 
 		String[] vString = new String[50];
@@ -161,12 +168,12 @@ public class IOData {
 		}
 
 		try (FileInputStream fi = new FileInputStream(f); DataInputStream read = new DataInputStream(fi);) {
-
+			//Recorres array hasta que reciba error por no leer mas
 			while (true) {
 				vString[cont] = read.readUTF();
 				cont++;
 			}
-
+		//Se controla el error aqui pues es bucle infinito
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -175,10 +182,10 @@ public class IOData {
 
 		return vString;
 	}
-
-	public static void saveAgentsFile(String route, agentesTIA.Agente[] vAgents) {
+	//Guarda el archivo agentes
+	public static void saveAgentsFile(String route, Agente[] vAgents) {
 		File f = new File(route);
-
+		
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
@@ -187,7 +194,7 @@ public class IOData {
 				e.printStackTrace();
 			}
 		}
-
+		//Escribe en el vector vAgentes
 		try (FileOutputStream fo = new FileOutputStream(f); ObjectOutputStream write = new ObjectOutputStream(fo);) {
 			write.writeObject(vAgents);
 		} catch (IOException e) {
@@ -196,13 +203,13 @@ public class IOData {
 		}
 
 	}
-
-	public static agentesTIA.Agente[] uploadAgentsFile(String route) {
-
-		agentesTIA.Agente[] vAgents = null;
+	//Actualiza el archivo agtentes
+	public static Agente[] uploadAgentsFile(String route) {
+		//Se inicia el vector
+		Agente[] vAgents = null;
 
 		File f = new File(route);
-
+		
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
@@ -213,9 +220,10 @@ public class IOData {
 		}
 
 		try (FileInputStream fi = new FileInputStream(f); ObjectInputStream read = new ObjectInputStream(fi)) {
-
+			//Se rellena el vector
 			try {
-				vAgents = (agentesTIA.Agente[]) read.readObject();
+				//Se lee como clase Object y se parsea a la clase Agente, para poder usarla
+				vAgents = (Agente[]) read.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -232,5 +240,4 @@ public class IOData {
 		return vAgents;
 	}
 
-	
 }

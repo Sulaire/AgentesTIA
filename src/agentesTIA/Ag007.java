@@ -8,6 +8,7 @@ public class Ag007 extends Agente{
 	
 	public Ag007(String name, int age, String direction, double salary, int kills) {
 		super(name, age, direction, salary);
+		//Campos unico de Ag007
 		this.kills = kills;
 		this.guns = inputOutput.IOData.readTxt("recursos/Armas.txt");
 	}

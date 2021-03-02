@@ -4,7 +4,14 @@ import java.util.Scanner;
 
 public class Funciones {
 
-	// Funcion para imprimir menu principal
+	/** 
+	 * @author Jordi y Diego
+	 * En esta clase se guardan algunas funciones que se repiten bastante a lo largo del programa
+	 */
+	
+	/**
+	 * @return esta funcion saca el menu por pantalla tantas veces como haga falta hasta que el usuario devuelva una opcion entre 1 y 8
+	 */
 	public static int printMenu() {
 
 		int option = 0;
@@ -37,8 +44,10 @@ public class Funciones {
 
 		return option;
 	}
-
-	// Menu para alistar agentes (Switch 5)
+	
+	/**
+	 * @return esta funcion es parecida al menu anterior solo que es utilizada para añadir el tipo de agente especifico segun la opcion escogida por el usuario (que debera ser un numero entre 1 y 4)
+	 */
 	public static int printAgent() {
 		int option = 0;
 
@@ -69,6 +78,10 @@ public class Funciones {
 		return option;
 	}
 
+	/**
+	 * @param vAgents
+	 * @return devuelve la primera posicion libre para poder añadir un nuevo agente
+	 */
 	public static int freePosition(agentesTIA.Agente[] vAgents) {
 	int pos = 0;
 	
