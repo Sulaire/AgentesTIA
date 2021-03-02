@@ -61,9 +61,15 @@ public class IOData {
 		// Borra el archivo anterior
 		f2.delete();
 	}
-
-	// Encripta los archivos pisos y armas
-	// Recibe la ruta de los archivo, el vector y la ruta del archivo a borrar
+	
+	/**
+	 * Encripta los archivos pisos y armas
+	 * Recibe la ruta de los archivo, el vector y la ruta del archivo a borrar
+	 * 
+	 * @param route				ruta del archivo destino
+	 * @param vString			Vector que se va a guardar
+	 * @param routeToDelete		ruta del archivo origen
+	 */
 	public static void encrypt(String route, String[] vString, String routeToDelete) {
 
 		File f = new File(route);
@@ -97,8 +103,12 @@ public class IOData {
 		// Borra el archivo anterior
 		f2.delete();
 	}
-
-	// Escribe el archivo en txt
+	
+	/**
+	 * Escribe el archivo en txt
+	 * @param add		String que va a añadir en el fichero
+	 * @param route		Ruta del fichero destino
+	 */
 	public static void writeTxt(String add, String route) {
 		File f = new File(route);
 		// Comprueba si el archivo existe
@@ -121,8 +131,12 @@ public class IOData {
 		}
 
 	}
-
-	// Lee los archivos armas y pisos
+ 
+	/**
+	 * Lee los archivos armas y pisos
+	 * @param route		ruta del archivo que lee
+	 * @return			devuelve un vector String con lo que ha leido
+	 */
 	public static String[] readTxt(String route) {
 
 		String[] vString = new String[50];
@@ -157,7 +171,12 @@ public class IOData {
 
 		return vString;
 	}
-	//Lee el archivo en Binario (lo mismo que el anterior)
+		
+	/**
+	 * Lee el archivo en Binario (lo mismo que el anterior)
+	 * @param route		ruta del archivo que lee
+	 * @return			devuelve un vector String con lo que ha leido
+	 */
 	public static String[] readBinary(String route) {
 
 		String[] vString = new String[50];
@@ -189,7 +208,12 @@ public class IOData {
 
 		return vString;
 	}
-	//Guarda el archivo agentes
+		
+	/**
+	 * Guarda el archivo agentes
+	 * @param route			ruta del fichero donde guardara la informacion
+	 * @param vAgents		vector que se guardara en el fichero
+	 */
 	public static void saveAgentsFile(String route, Agente[] vAgents) {
 		File f = new File(route);
 		
@@ -210,7 +234,12 @@ public class IOData {
 		}
 
 	}
-	//Actualiza el archivo agtentes
+		
+	/**
+	 * Carga el archivo agtentes en el programa
+	 * @param route		ruta del fichero para leerlo
+	 * @return			devuelve un vector con los agentes guardados en el fi
+	 */
 	public static Agente[] uploadAgentsFile(String route) {
 		//Se inicia el vector
 		Agente[] vAgents = null;
