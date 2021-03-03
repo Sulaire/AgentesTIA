@@ -1,10 +1,12 @@
 package agentesTIA;
 
+import java.util.ArrayList;
+
 public class Ag007 extends Agente{
 
 	
 	private int kills;
-	private String[] guns;
+	private ArrayList<String> guns;
 	
 	public Ag007(String name, int age, String direction, double salary, int kills) {
 		super(name, age, direction, salary);

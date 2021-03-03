@@ -1,6 +1,7 @@
 package principal;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import agentesTIA.Espionaje;
@@ -200,9 +201,9 @@ public class Main {
 					System.out.println("Los archivos ya estan encriptados");
 				} else {
 					//Primero se leeran los archivos de texto, se rellenaran dos vectores String (uno de armas y otro de pisos) y por ultimo se rellenaran dos archivos binarios con la informacion de los vectores
-					String[] vPisos = inputOutput.IOData.readTxt("recursos/Pisos.txt");
+					ArrayList<String> vPisos = inputOutput.IOData.readTxt("recursos/Pisos.txt");
 					inputOutput.IOData.decrypt("recursos/Pisos.dat", vPisos, "recursos/Pisos.txt");
-					String[] vArmas = inputOutput.IOData.readTxt("recursos/Armas.txt");
+					ArrayList<String> vArmas = inputOutput.IOData.readTxt("recursos/Armas.txt");
 					inputOutput.IOData.decrypt("recursos/Armas.dat", vArmas, "recursos/Armas.txt");
 
 					System.out.println("Archivos encriptados");
@@ -218,9 +219,9 @@ public class Main {
 					System.out.println("Los archivos ya estan desencriptados");
 				} else {
 					//Primero se leeran los archivos binarios, se rellenaran dos vectores String (uno de armas y otro de pisos) y por ultimo se rellenaran dos archivos de texto con la informacion de los vectores
-					String[] vPisos2 = inputOutput.IOData.readBinary("recursos/Pisos.dat");
+					ArrayList<String> vPisos2 = inputOutput.IOData.readBinary("recursos/Pisos.dat");
 					inputOutput.IOData.encrypt("recursos/Pisos.txt", vPisos2, "recursos/Pisos.dat");
-					String[] vArmas2 = inputOutput.IOData.readBinary("recursos/Armas.dat");
+					ArrayList<String> vArmas2 = inputOutput.IOData.readBinary("recursos/Armas.dat");
 					inputOutput.IOData.encrypt("recursos/Armas.txt", vArmas2, "recursos/Armas.dat");
 
 					System.out.println("Archivos desencriptados");

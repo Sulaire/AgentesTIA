@@ -1,8 +1,10 @@
 package agentesTIA;
 
+import java.util.ArrayList;
+
 public class Espionaje extends Agente{
 
-	private String[] safeHouses; // cambiar a vector
+	private ArrayList<String> safeHouses; // cambiar a vector
 
 	public Espionaje(String name, int age, String direction, double salary) {
 		super(name, age, direction, salary);

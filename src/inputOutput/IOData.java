@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import agentesTIA.Agente;
@@ -137,10 +138,9 @@ public class IOData {
 	 * @param route		ruta del archivo que lee
 	 * @return			devuelve un vector String con lo que ha leido
 	 */
-	public static String[] readTxt(String route) {
+	public static ArrayList<String> readTxt(String route) {
 
-		String[] vString = new String[50];
-		int cont = 0;
+		ArrayList<String> vString = new ArrayList<>();
 
 		File f = new File(route);
 
@@ -156,9 +156,7 @@ public class IOData {
 		try (FileReader fr = new FileReader(f); Scanner read = new Scanner(fr)) {
 			
 			while (read.hasNextLine()) {
-				vString[cont] = read.nextLine();
-
-				cont++;
+				vString.add(read.nextLine());
 			}
 
 		} catch (FileNotFoundException e) {
@@ -177,10 +175,9 @@ public class IOData {
 	 * @param route		ruta del archivo que lee
 	 * @return			devuelve un vector String con lo que ha leido
 	 */
-	public static String[] readBinary(String route) {
+	public static ArrayList<String> readBinary(String route) {
 
-		String[] vString = new String[50];
-		int cont = 0;
+		ArrayList<String> vString = new ArrayList<>();
 
 		File f = new File(route);
 
@@ -196,8 +193,7 @@ public class IOData {
 		try (FileInputStream fi = new FileInputStream(f); DataInputStream read = new DataInputStream(fi);) {
 			//Recorres array hasta que reciba error por no leer mas
 			while (true) {
-				vString[cont] = read.readUTF();
-				cont++;
+				vString.add(read.readUTF());
 			}
 		//Se controla el error aqui pues es bucle infinito
 		} catch (FileNotFoundException e) {
