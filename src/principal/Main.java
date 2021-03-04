@@ -24,20 +24,16 @@ public class Main {
 
 		int opt = 0;
 
+		// Aqui se carga el vector llamando a la funcion uploadAgentsFile
+		ArrayList<Agente> vAgents = inputOutput.IOData.uploadAgentsFile("recursos/Agentes.dat");
+	//	ArrayList<Agente> vAgents = new ArrayList<>();
 		do {
-			// Aqui se carga el vector llamando a la funcion uploadAgentsFile
-			Agente[] vAgents = inputOutput.IOData.uploadAgentsFile("recursos/Agentes.dat");
-			
+		
 			// Switch del menu principal.
 			switch (principal.Funciones.printMenu()) {
 
 			case 1:
-				//La opcion 1 muestra por pantalla todos los agentes registrados
-				for (Agente a : vAgents) {
-					if (a != null) {
-						System.out.println(a.toString());
-					}
-				}
+				ViewAllAgents(vAgents);
 
 				break;
 				
@@ -60,9 +56,9 @@ public class Main {
 				} while (money == -8);
 
 				System.out.println("Estos son los agentes que cobran mas de " + money + " euros");
-				for (int i = 0; i < vAgents.length; i++) {
-					if (vAgents[i] != null && vAgents[i].getSalary() > money) {
-						System.out.println(vAgents[i].toString());
+				for (int i = 0; i < vAgents.size(); i++) {
+					if (vAgents.get(i) != null && vAgents.get(i).getSalary() > money) {
+						System.out.println(vAgents.get(i).toString());
 					}
 				}
 
@@ -161,8 +157,8 @@ public class Main {
 					int yearsLeading;
 					System.out.println("Anos de mandato");
 					yearsLeading = readInt.nextInt();
-					vAgents[Funciones.freePosition(vAgents)] = new agentesTIA.Jefazo(name, age, direction, salary,
-							yearsLeading);
+					vAgents.add(new agentesTIA.Jefazo(name, age, direction, salary,
+							yearsLeading));
 
 					break;
 				case 2:
@@ -180,11 +176,11 @@ public class Main {
 							readInt = new Scanner(System.in);
 						}
 					} while (kills < 0);
-					vAgents[Funciones.freePosition(vAgents)] = new agentesTIA.Ag007(name, age, direction, salary,
-							kills);
+					vAgents.add(new agentesTIA.Ag007(name, age, direction, salary,
+							kills));
 					break;
 				case 3:
-					vAgents[Funciones.freePosition(vAgents)] = new agentesTIA.Espionaje(name, age, direction, salary);
+					vAgents.add(new agentesTIA.Espionaje(name, age, direction, salary));
 					break;
 				case 4:
 					break;
@@ -238,6 +234,15 @@ public class Main {
 
 		} while (opt != 8);
 
+	}
+
+	private static void ViewAllAgents(ArrayList<Agente> vAgents) {
+		//La opcion 1 muestra por pantalla todos los agentes registrados
+		for (Agente a : vAgents) {
+			
+				System.out.println(a.toString());
+			
+		}
 	}
 
 }

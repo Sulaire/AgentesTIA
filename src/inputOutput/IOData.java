@@ -26,9 +26,9 @@ public class IOData {
 	 * 
 	 * @param route				ruta del archivo destino
 	 * @param vString			Vector que se va a guardar
-	 * @param routeToDelete		ruta del archivo origen
+	 * @param routeToDelete		ruta del archivo origen(la cual se borrara)
 	 */
-	public static void decrypt(String route, String[] vString, String routeToDelete) {
+	public static void decrypt(String route, ArrayList<String> vString, String routeToDelete) {
 
 		File f = new File(route);
 		File f2 = new File(routeToDelete);
@@ -44,11 +44,8 @@ public class IOData {
 		// Se declara FileOutputStream y DataOutputStream (escribe en UTF)
 		try (FileOutputStream fi = new FileOutputStream(f); DataOutputStream write = new DataOutputStream(fi)) {
 			// Recorre el array comprobando si la posicion del vector esta vacia
-			for (int i = 0; i < vString.length; i++) {
-				if (vString[i] == null) {
-					break;
-				} else
-					write.writeUTF(vString[i]);
+			for (int i = 0; i < vString.size(); i++) {
+					write.writeUTF(vString.get(i));
 
 			}
 
@@ -71,7 +68,7 @@ public class IOData {
 	 * @param vString			Vector que se va a guardar
 	 * @param routeToDelete		ruta del archivo origen
 	 */
-	public static void encrypt(String route, String[] vString, String routeToDelete) {
+	public static void encrypt(String route, ArrayList<String> vString, String routeToDelete) {
 
 		File f = new File(route);
 		File f2 = new File(routeToDelete);
@@ -88,12 +85,12 @@ public class IOData {
 		try (FileWriter fw = new FileWriter(f); PrintWriter write = new PrintWriter(fw)) {
 			// Recorre el array comprobando si la posicion del vector esta vacia para
 			// escribir
-			for (int i = 0; i < vString.length; i++) {
-				if (vString[i + 1] == null) {
-					write.write(vString[i]);
+			for (int i = 0; i < vString.size(); i++) {
+				if (i<(vString.size()-1)) {
+					write.write(vString.get(i));
 					break;
 				} else
-					write.write(vString[i] + "\n");
+					write.write(vString.get(i) + "\n");
 
 			}
 
@@ -210,7 +207,7 @@ public class IOData {
 	 * @param route			ruta del fichero donde guardara la informacion
 	 * @param vAgents		vector que se guardara en el fichero
 	 */
-	public static void saveAgentsFile(String route, Agente[] vAgents) {
+	public static void saveAgentsFile(String route, ArrayList<Agente> vAgents) {
 		File f = new File(route);
 		
 		if (!f.exists()) {
@@ -236,9 +233,9 @@ public class IOData {
 	 * @param route		ruta del fichero para leerlo
 	 * @return			devuelve un vector con los agentes guardados en el fi
 	 */
-	public static Agente[] uploadAgentsFile(String route) {
+	public static ArrayList<Agente> uploadAgentsFile(String route) {
 		//Se inicia el vector
-		Agente[] vAgents = null;
+		ArrayList<Agente> vAgents = new ArrayList<Agente>();
 
 		File f = new File(route);
 		
@@ -255,7 +252,7 @@ public class IOData {
 			//Se rellena el vector
 			try {
 				//Se lee como clase Object y se parsea a la clase Agente, para poder usarla
-				vAgents = (Agente[]) read.readObject();
+				vAgents = (ArrayList<Agente>) read.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
