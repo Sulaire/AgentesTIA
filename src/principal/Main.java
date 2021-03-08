@@ -39,153 +39,25 @@ public class Main {
 				
 				
 			case 2:
-				//La opcion 2 muestra los agentes con un sueldo superior al introducido por el usuario
-				int money = -8;
-				Scanner scanMoney = new Scanner(System.in);
-				System.out.println("Dime la cifra a buscar");
-				do {
-					try {
-
-						money = scanMoney.nextInt();
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						System.out.println("El valor introducido no puede ser una letra");
-						System.out.println("Pon una opcion valida");
-						scanMoney = new Scanner(System.in);
-					}
-				} while (money == -8);
-
-				System.out.println("Estos son los agentes que cobran mas de " + money + " euros");
-				for (int i = 0; i < vAgents.size(); i++) {
-					if (vAgents.get(i) != null && vAgents.get(i).getSalary() > money) {
-						System.out.println(vAgents.get(i).toString());
-					}
-				}
+				viewAgentsBySalary(vAgents);
 
 				break;
 				
 				
 			case 3:
-				//La opcion 3 sirve para a�adir un nuevo piso franco al archivo Pisos.txt
-				File f = new File("recursos/Pisos.txt");
-				Scanner read = new Scanner(System.in);
-				if (!f.exists()) {
-					System.out.println("El archivo esta encriptado, desencriptalo primero");
-				}
-
-				String flat = "";
-				System.out.println("Dime el nuevo piso franco que se podra utilizar");
-				flat = read.nextLine();
-				IOData.writeTxt(flat, "recursos/Pisos.txt");
+				addFlat();
 
 				break;
 				
 				
 			case 4:
-				//La opcion 4 sirve para a�adir una nueva arna al archivo Armas.txt
-				File f2 = new File("recursos/Armas.txt");
-				Scanner read2 = new Scanner(System.in);
-				if (!f2.exists()) {
-					System.out.println("El archivo está encriptado, desencríptalo primero");
-				} else {
-
-				}
-
-				String gun = "";
-				System.out.println("Dime la nueva arma disponible");
-				gun = read2.nextLine();
-				IOData.writeTxt(gun, "recursos/Armas.txt");
+				addGun();
 
 				break;
 				
 				
 			case 5:
-				//La opcion 5 sirve para registrar un nuevo agente
-				int ag = Funciones.printAgent();
-				int age = 0;
-				double salary = 0;
-				String name;
-				String direction;
-				System.out.println("Dime los datos del agente");
-				Scanner readString = new Scanner(System.in);
-				Scanner readInt = new Scanner(System.in);
-				Scanner readDouble = new Scanner(System.in);
-				
-				
-				//Aqui se pide el nombre
-				System.out.println("Nombre:");
-				name = readString.nextLine();
-				
-				//Aqui se pide la edad*
-				do {
-					try {
-						System.out.println("Edad");
-						age = readInt.nextInt();
-						if (age < 0) {
-							System.out.println("El numero no puede ser negativo");
-						}
-					} catch (Exception e) {
-						System.out.println("Introduce un numero valido");
-						readInt = new Scanner(System.in);
-					}
-				} while (age <= 0);
-				
-				//Aqui se pide la direccion*/
-				System.out.println("Direccion");
-				direction = readString.nextLine();
-				
-				
-				//Aqui se pide el salario
-				do {
-					try {
-						System.out.println("Salario");
-						salary = readDouble.nextDouble();
-						if (salary < 0) {
-							System.out.println("El numero no puede ser negativo");
-						}
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						System.out.println("Introduce un numero vaido");
-						readDouble = new Scanner(System.in);
-					}
-				} while (salary <= 0);
-				
-				
-				switch (ag) {
-				//En este switch se indicara el tipo de agente a introducir y dependiendo de cada uno pedira su informacion especifica
-				case 1:
-					int yearsLeading;
-					System.out.println("Anos de mandato");
-					yearsLeading = readInt.nextInt();
-					vAgents.add(new agentesTIA.Jefazo(name, age, direction, salary,
-							yearsLeading));
-
-					break;
-				case 2:
-					int kills = 0;
-					do {
-						try {
-							System.out.println("Numero de bajas");
-							kills = readInt.nextInt();
-							if (kills < 0) {
-								System.out.println("El numero no puede ser negativo");
-							}
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							System.out.println("Introduce un numero valido");
-							readInt = new Scanner(System.in);
-						}
-					} while (kills < 0);
-					vAgents.add(new agentesTIA.Ag007(name, age, direction, salary,
-							kills));
-					break;
-				case 3:
-					vAgents.add(new agentesTIA.Espionaje(name, age, direction, salary));
-					break;
-				case 4:
-					break;
-				}
-				inputOutput.IOData.saveAgentsFile("recursos/Agentes.dat", vAgents);
+				addAgent(vAgents);
 				break;
 				
 				
@@ -235,6 +107,150 @@ public class Main {
 
 		} while (opt != 8);
 
+	}
+
+	private static void addAgent(ArrayList<Agente> vAgents) {
+		//La opcion 5 sirve para registrar un nuevo agente
+		int ag = Funciones.printAgent();
+		int age = 0;
+		double salary = 0;
+		String name;
+		String direction;
+		System.out.println("Dime los datos del agente");
+		Scanner readString = new Scanner(System.in);
+		Scanner readInt = new Scanner(System.in);
+		Scanner readDouble = new Scanner(System.in);
+		
+		
+		//Aqui se pide el nombre
+		System.out.println("Nombre:");
+		name = readString.nextLine();
+		
+		//Aqui se pide la edad*
+		do {
+			try {
+				System.out.println("Edad");
+				age = readInt.nextInt();
+				if (age < 0) {
+					System.out.println("El numero no puede ser negativo");
+				}
+			} catch (Exception e) {
+				System.out.println("Introduce un numero valido");
+				readInt = new Scanner(System.in);
+			}
+		} while (age <= 0);
+		
+		//Aqui se pide la direccion*/
+		System.out.println("Direccion");
+		direction = readString.nextLine();
+		
+		
+		//Aqui se pide el salario
+		do {
+			try {
+				System.out.println("Salario");
+				salary = readDouble.nextDouble();
+				if (salary < 0) {
+					System.out.println("El numero no puede ser negativo");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println("Introduce un numero vaido");
+				readDouble = new Scanner(System.in);
+			}
+		} while (salary <= 0);
+		
+		
+		switch (ag) {
+		//En este switch se indicara el tipo de agente a introducir y dependiendo de cada uno pedira su informacion especifica
+		case 1:
+			int yearsLeading;
+			System.out.println("Anos de mandato");
+			yearsLeading = readInt.nextInt();
+			vAgents.add(new agentesTIA.Jefazo(name, age, direction, salary,
+					yearsLeading));
+
+			break;
+		case 2:
+			int kills = 0;
+			do {
+				try {
+					System.out.println("Numero de bajas");
+					kills = readInt.nextInt();
+					if (kills < 0) {
+						System.out.println("El numero no puede ser negativo");
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					System.out.println("Introduce un numero valido");
+					readInt = new Scanner(System.in);
+				}
+			} while (kills < 0);
+			vAgents.add(new agentesTIA.Ag007(name, age, direction, salary,
+					kills));
+			break;
+		case 3:
+			vAgents.add(new agentesTIA.Espionaje(name, age, direction, salary));
+			break;
+		case 4:
+			break;
+		}
+		inputOutput.IOData.saveAgentsFile("recursos/Agentes.dat", vAgents);
+	}
+
+	private static void addGun() {
+		//La opcion 4 sirve para a�adir una nueva arna al archivo Armas.txt
+		File f2 = new File("recursos/Armas.txt");
+		Scanner read2 = new Scanner(System.in);
+		if (!f2.exists()) {
+			System.out.println("El archivo está encriptado, desencríptalo primero");
+		} else {
+
+		}
+
+		String gun = "";
+		System.out.println("Dime la nueva arma disponible");
+		gun = read2.nextLine();
+		IOData.writeTxt(gun, "recursos/Armas.txt");
+	}
+
+	private static void addFlat() {
+		//La opcion 3 sirve para a�adir un nuevo piso franco al archivo Pisos.txt
+		File f = new File("recursos/Pisos.txt");
+		Scanner read = new Scanner(System.in);
+		if (!f.exists()) {
+			System.out.println("El archivo esta encriptado, desencriptalo primero");
+		}
+
+		String flat = "";
+		System.out.println("Dime el nuevo piso franco que se podra utilizar");
+		flat = read.nextLine();
+		IOData.writeTxt(flat, "recursos/Pisos.txt");
+	}
+
+	private static void viewAgentsBySalary(ArrayList<Agente> vAgents) {
+		//La opcion 2 muestra los agentes con un sueldo superior al introducido por el usuario
+		int money = -8;
+		Scanner scanMoney = new Scanner(System.in);
+		System.out.println("Dime la cifra a buscar");
+		do {
+			try {
+
+				money = scanMoney.nextInt();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println("El valor introducido no puede ser una letra");
+				System.out.println("Pon una opcion valida");
+				scanMoney = new Scanner(System.in);
+			}
+		} while (money == -8);
+
+		System.out.println("Estos son los agentes que cobran mas de " + money + " euros");
+		for (int i = 0; i < vAgents.size(); i++) {
+			if (vAgents.get(i) != null && vAgents.get(i).getSalary() > money) {
+				System.out.println(vAgents.get(i).toString());
+			}
+		}
 	}
 
 	private static void ViewAllAgents(ArrayList<Agente> vAgents) {
