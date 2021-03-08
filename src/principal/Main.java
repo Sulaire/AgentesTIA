@@ -204,6 +204,7 @@ public class Main {
 
 					System.out.println("Archivos encriptados");
 				}
+				IOData.delAllTxt("recursos");
 				break;
 				
 				

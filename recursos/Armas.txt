@@ -1,5 +1,0 @@
-Pistola
-Rifle
-Escopeta
-Lanza Pepos
-BFG

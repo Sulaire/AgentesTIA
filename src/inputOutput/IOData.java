@@ -269,4 +269,24 @@ public class IOData {
 		return vAgents;
 	}
 
+	
+	public static void delAllTxt(String route) {
+		File f = new File(route);
+		
+		if (!f.exists()) {
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		for (File file : f.listFiles()) {
+			   if (file.getName().endsWith(".txt")) {
+			    file.delete();
+			   }
+		}
+		
+	}
 }
