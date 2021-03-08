@@ -12,17 +12,20 @@ import inputOutput.IOData;
 
 public class TestUploadAgentsFile {
 
+	ArrayList<Agente> actual;
+	ArrayList<Agente> expected;
+
 	@Test
 	public void testUploadAgentsFile() {
-		
-		ArrayList<Agente> actual = IOData.uploadAgentsFile("recursos/Agentes.dat");
-		
-		ArrayList<Agente> expected = new ArrayList<Agente>();
-		
+
+		actual = IOData.uploadAgentsFile("recursos/Agentes.dat");
+
+		expected = new ArrayList<Agente>();
+
 		expected.add(new Jefazo("Juan", 22, "sdfg", 22, 10));
-		
+
 		assertArrayEquals(expected.toArray(), actual.toArray());
-	
+
 	}
 
 }
