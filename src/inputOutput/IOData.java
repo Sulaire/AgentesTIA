@@ -131,7 +131,7 @@ public class IOData {
 	}
  
 	/**
-	 * Lee los archivos armas y pisos
+	 * Lee los archivos armas y pisos de texto
 	 * @param route		ruta del archivo que lee
 	 * @return			devuelve un vector String con lo que ha leido
 	 */

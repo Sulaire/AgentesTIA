@@ -6,6 +6,14 @@ public class Espionaje extends Agente{
 
 	private ArrayList<String> safeHouses; // cambiar a vector
 
+	/**
+	 * 
+	 * @param name
+	 * @param age
+	 * @param direction
+	 * @param salary
+	 * @param safeHouses 
+	 */
 	public Espionaje(String name, int age, String direction, double salary) {
 		super(name, age, direction, salary);
 		//Campo unico de Espionaje

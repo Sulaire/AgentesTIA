@@ -3,6 +3,14 @@ package agentesTIA;
 import java.io.Serializable;
 import java.util.Scanner;
 //Clase principal de la que heredan el resto de agentes
+
+/**
+ * 
+ * @author daw-B
+ *
+ */
+
+
 public class Agente implements Serializable {
 
 	protected String name;
@@ -10,6 +18,13 @@ public class Agente implements Serializable {
 	protected String direction;
 	protected double salary;
 
+	/**
+	 * 
+	 * @param name
+	 * @param age
+	 * @param direction
+	 * @param salary
+	 */
 	public Agente(String name, int age, String direction, double salary) {
 		this.name = name;
 		this.age = age;
@@ -48,6 +63,8 @@ public class Agente implements Serializable {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+	
+
 
 	@Override
 	public String toString() {

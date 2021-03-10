@@ -16,7 +16,6 @@ public class Main {
 	/**
 	 * @author Jordi y Diego
 	 * @version 1.0
-	 * @param args
 	 */
 	
 	public static void main(String[] args) {
